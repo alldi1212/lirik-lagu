@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kita Usahakan Rumah Itu - Sal Priadi</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1e1e1e;
+      color: #fff;
+      background-image: url('foto/foto1.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin: 5px;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+
+    h2 {
+      font-weight: normal;
+      font-size: 1em;
+      opacity: 0.8;
+    }
+
+    .music-controls {
+      margin: 20px 0;
+    }
+
+    .music-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .music-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
+    }
+
+    .music-btn svg {
+      fill: white;
+      width: 28px;
+      height: 28px;
+    }
+
+    .lyrics-box {
+      width: 90%;
+      max-width: 700px;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .slide {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1.5s ease, transform 1.5s ease;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      font-size: 1.2em;
+      line-height: 1.5;
+      text-align: center;
+      white-space: pre-wrap;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5em;
+      }
+
+      h2 {
+        font-size: 0.9em;
+      }
+
+      .music-btn {
+        width: 50px;
+        height: 50px;
+      }
+
+      .lyrics-box {
+        font-size: 0.95em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>Kita Usahakan Rumah Itu</h1>
+    <h2>Sal Priadi</h2>
+
+    <!-- Tombol Musik -->
+    <div class="music-controls">
+      <button id="musicBtn" class="music-btn" aria-label="Toggle Music">
+        <svg id="pauseIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M6 4h4v16H6zm8 0h4v16h-4z"/>
+        </svg>
+        <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Audio -->
+    <audio id="audio" autoplay>
+      <source src="musicc/kita usahakan rumah itu.mp3" type="audio/mpeg">
+      Browser kamu tidak mendukung pemutaran audio.
+    </audio>
+
+    <!-- Box Lirik -->
+    <div class="lyrics-box" id="lyricsBox">
+      <div class="slide">Kita usahakan rumah itu</div>
+      <div class="slide">dari depan akan tampak sederhana</div>
+      <div class="slide">tapi kebun yang luas</div>
+      <div class="slide">tanaman yang mewah megah</div>
+      <div class="slide">Kita usahakan rumah itu</div>
+      <div class="slide">dari depan akan tampak sederhana</div>
+      <div class="slide">tapi di buat kuat</div>
+      <div class="slide">di rancang muat, lega</div>
+      <div class="slide">urusan perabotan dan wangi wangian</div>
+      <div class="slide">kuserahkan pada seleramu</div>
+      <div class="slide">yang lebih maju tapi tata ruang</div>
+      <div class="slide">aku ikut pertimbangkan</div>
+      <div class="slide">karna kalau nanti</div>
+      <div class="slide">kita punya kesibukan malam</div>
+      <div class="slide">Tetap kumpul di meja panjang</div>
+      <div class="slide">ruang makan kita berbincang</div>
+      <div class="slide">tentang hari yang panjanggg</div>
+      <div class="slide">Kita usahakan rumah itu</div>
+      <div class="slide">Yang tiap malam terdengar</div>
+      <div class="slide">Suara cerita sebelum tidur</div>
+      <div class="slide">Dari ibu kepada anaknya</div>
+      <div class="slide">Kita usahakan rumah itu</div>
+      <div class="slide">Yang di dindingnya penuh</div>
+      <div class="slide">Foto penuh tawa dan cerita</div>
+      <div class="slide">Yang penuh foto penuh tawa dan cerita</div>
+      <div class="slide">Kita usahakan rumah itu</div>
+      <div class="slide">Yang jendelanya menghadap ke jalan kecil</div>
+      <div class="slide">Tempat anak-anak bermain sepulang sekolah</div>
+      <div class="slide">Dan daun kering menari</div>
+      <div class="slide">Bila hujan mulai reda</div>
+    </div>
+  </div>
+
+  <script>
+    const audio = document.getElementById('audio');
+    const musicBtn = document.getElementById('musicBtn');
+    const playIcon = document.getElementById('playIcon');
+    const pauseIcon = document.getElementById('pauseIcon');
+    const slides = document.querySelectorAll('.slide');
+    const timings = [0, 8, 16, 25, 33, 41, 50, 58, 66, 74, 82, 90, 98, 106, 114, 122, 130, 138, 146, 154, 162, 170, 178, 186, 194]; // Waktu dalam detik
+    let current = 0;
+
+    // Tombol Play/Pause
+    musicBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'inline';
+      } else {
+        audio.pause();
+        pauseIcon.style.display = 'none';
+        playIcon.style.display = 'inline';
+      }
+    });
+
+    // Munculkan slide dengan delay fade
+    audio.addEventListener('timeupdate', () => {
+      if (current < timings.length && audio.currentTime >= timings[current]) {
+        slides[current].classList.add('active');
+        current++;
+      }
+    });
+  </script>
+</body>
+</html>
